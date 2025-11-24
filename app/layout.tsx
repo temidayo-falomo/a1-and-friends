@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Exhibit",
+  title: "Exhibit | A1 & Friends",
   description: "The Future of African Entertainment",
 };
 
