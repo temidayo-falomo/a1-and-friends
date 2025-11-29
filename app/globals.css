@@ -160,3 +160,164 @@
     conic-gradient(from -90deg at bottom var(--b) right var(--b), var(--_g))
       100% 100% / var(--_p);
 }
+
+@font-face {
+  font-family: helvetica-extended;
+  src: url("/fonts/neue-helvetica/Helvetica Neue LT 53 Extended.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: helvetica-extended;
+  src: url("/fonts/neue-helvetica/Helvetica Neue LT 43 Light Extended.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: helvetica-extended;
+  src: url("/fonts/neue-helvetica/Helvetica Neue LT 63 Medium Extended.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: helvetica-extended;
+  src: url("/fonts/neue-helvetica/Helvetica Neue LT 73 Bold Extended.ttf");
+  font-weight: 600;
+}
+@font-face {
+  font-family: helvetica-extended;
+  src: url("/fonts/neue-helvetica/Helvetica Neue LT 83 Heavy Extended.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: helvetica-extended;
+  src: url("/fonts/neue-helvetica/Helvetica Neue LT 93 Black Extended.ttf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: canela;
+  src: url("/fonts/canela/Canela-Light-Trial.otf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: canela;
+  src: url("/fonts/canela/Canela-LightItalic-Trial.otf");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: canela;
+  src: url("/fonts/canela/Canela-Regular-Trial.otf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: canela;
+  src: url("/fonts/canela/Canela-RegularItalic-Trial.otf");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: canela;
+  src: url("/fonts/canela/Canela-Medium-Trial.otf");
+  font-weight: 500;
+}
+
+body {
+  color: #f5f7fa;
+  background: #000;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  box-sizing: border-box;
+  overflow: hidden; /* Hides both vertical and horizontal scrollbars */
+  overflow-y: scroll;
+  transition-property: opacity, background, transform, filter;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
+}
+
+/* Hides the scrollbar for WebKit browsers (Chrome, Safari) */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.slow-spin {
+  animation: slow-spin 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes footer {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+
+.animate-footer {
+  display: flex;
+  animation: marquee 35s linear infinite;
+}
+
+.bordered-container {
+  --b: 1.5px; /* thickness of the border */
+  --c: white; /* color of the border */
+  --w: 20px; /* width of border */
+
+  border: var(--b) solid #0000; /* space for the border */
+  --_g: #0000 90deg, var(--c) 0;
+  --_p: var(--w) var(--w) border-box no-repeat;
+  background: conic-gradient(
+        from 90deg at top var(--b) left var(--b),
+        var(--_g)
+      )
+      0 0 / var(--_p),
+    conic-gradient(from 180deg at top var(--b) right var(--b), var(--_g)) 100% 0 /
+      var(--_p),
+    conic-gradient(from 0deg at bottom var(--b) left var(--b), var(--_g)) 0 100% /
+      var(--_p),
+    conic-gradient(from -90deg at bottom var(--b) right var(--b), var(--_g))
+      100% 100% / var(--_p);
+}
+
+.shutter-side {
+  width: calc(5vw / 2);
+}
+
+.shutter-center {
+  width: calc(95vw / 4);
+}
+
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -47,7 +47,7 @@ const NavBar: React.FC = () => {
     <>
       <div
         className={
-          "w-full max-w-6xl flex justify-center items-center left-1/2 -translate-x-1/2 top-0 z-[100] mx-auto fixed border-b-[1.4px] " +
+          "w-full max-w-7xl flex justify-center items-center left-1/2 -translate-x-1/2 top-0 z-[100] mx-auto fixed  " +
           (pathname !== "/about" && navbarBackground
             ? "bg-black border-grid border-b-[0px]"
             : pathname !== "/about" && !navbarBackground
@@ -59,26 +59,27 @@ const NavBar: React.FC = () => {
       >
         <div
           className={
-            "flex py-[25px] w-[90%] md:w-[95%] justify-between items-center"
+            "flex py-[9px] md:py-[20px] w-[90%] md:w-[95%] justify-between items-center"
           }
         >
           <TransitionLink href="/">
             {pathname === "/about" ? (
               <Image
-                className="relative"
-                src="/images/logo-black.svg"
-                alt="Arcxne Icon"
-                width={120}
-                height={41}
+                className="relative w-[80px]"
+                src="/A1 Assets/LOGOS/A1/A1 2.png"
+                alt="A1 Icon"
+                width={80}
+                height={80}
                 priority
+                
               />
             ) : (
               <Image
-                className="relative"
-                src="/images/logo.svg"
-                alt="Arcxne Icon"
-                width={120}
-                height={41}
+                className="relative w-[80px]"
+                src="/A1 Assets/LOGOS/A1/A1 2.png"
+                alt="A1 Icon"
+                width={80}
+                height={80}
                 priority
               />
             )}
@@ -143,7 +144,7 @@ const NavBar: React.FC = () => {
 more about investment opportunities with Exhibit."
               />
             </div> */}
-            <MenuIcon
+            {/* <MenuIcon
               setMenuToggle={setMenuToggle}
               menuOpen={menuToggle}
               setOpenMobileMenu={setOpenMobileMenu}
@@ -155,7 +156,7 @@ more about investment opportunities with Exhibit."
               />
             ) : (
               ""
-            )}
+            )} */}
           </div>
         </div>
       </div>
