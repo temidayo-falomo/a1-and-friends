@@ -13,6 +13,12 @@ const codePattern = /^[A-Z0-9]{4}$/;
 const SHEET_BEST_API =
   "https://api.sheetbest.com/sheets/0a1bb073-c1eb-4937-a047-6e9ad4277aa8";
 
+// Mapping of event names to their unique RSVP codes
+const EVENT_CODES: Record<string, string> = {
+  Waved: "A1WV",
+  "Cruise Gang & 44DB": "A144",
+};
+
 interface RSVPModalProps {
   children: React.ReactNode;
   eventName?: string;
@@ -48,10 +54,25 @@ export default function RSVPModal({ children, eventName }: RSVPModalProps) {
     event.preventDefault();
     const trimmedName = form.name.trim();
     const trimmedEmail = form.email.trim();
-    if (!trimmedName || !trimmedEmail || !codePattern.test(form.code)) {
+    const trimmedCode = form.code.trim().toUpperCase();
+
+    // Basic validation
+    if (!trimmedName || !trimmedEmail || !codePattern.test(trimmedCode)) {
       setStatus("error");
       setHint("Code must be exactly 4 letters/numbers • Fill every field.");
       return;
+    }
+
+    // Validate code matches the event's required code
+    if (eventName) {
+      const expectedCode = EVENT_CODES[eventName];
+      if (expectedCode && trimmedCode !== expectedCode) {
+        setStatus("error");
+        setHint(
+          `Invalid code. Please use the correct RSVP code for this event.`
+        );
+        return;
+      }
     }
 
     setStatus("loading");
@@ -67,7 +88,7 @@ export default function RSVPModal({ children, eventName }: RSVPModalProps) {
           {
             Name: trimmedName,
             Email: trimmedEmail,
-            Code: form.code.toUpperCase(),
+            Code: trimmedCode,
             Event: eventName || "Unknown",
             Timestamp: new Date().toISOString(),
           },
