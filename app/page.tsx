@@ -7,7 +7,6 @@ import ObjViewer from "@/components/obj-viewer";
 import EventCard from "@/components/event-card";
 import { events } from "@/data/events";
 import LightRays from "@/components/LightRays";
-import Ballpit from "@/components/Ballpit";
 
 const codePattern = /^[A-Z0-9]{4}$/;
 
