@@ -99,7 +99,7 @@ export default function Waved({ event }: WavedProps) {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-8">
-              <RSVPModal>
+              <RSVPModal eventName={event.eventName}>
                 <button className="rounded-full border-2 cursor-pointer border-white bg-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:bg-black hover:text-white hover:scale-105">
                   RSVP guestlist
                 </button>
@@ -204,7 +204,7 @@ export default function Waved({ event }: WavedProps) {
             extraordinary night.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <RSVPModal>
+            <RSVPModal eventName={event.eventName}>
               <button className="rounded-full border-2 cursor-pointer border-white bg-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:bg-black hover:text-white hover:scale-105">
                 RSVP guestlist
               </button>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import Image from "next/image";
 import {
   Dialog,
   DialogContent,
@@ -11,11 +10,19 @@ import {
 
 const codePattern = /^[A-Z0-9]{4}$/;
 
-const girlies = ["Girl 2.png", "Girl 5.png", "Girl 6.png"];
+const SHEET_BEST_API =
+  "https://api.sheetbest.com/sheets/0a1bb073-c1eb-4937-a047-6e9ad4277aa8";
 
-export default function RSVPModal({ children }: { children: React.ReactNode }) {
+interface RSVPModalProps {
+  children: React.ReactNode;
+  eventName?: string;
+}
+
+export default function RSVPModal({ children, eventName }: RSVPModalProps) {
   const [form, setForm] = useState({ name: "", email: "", code: "" });
-  const [status, setStatus] = useState<"idle" | "error" | "success">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "error" | "success" | "loading"
+  >("idle");
   const [hint, setHint] = useState(
     "Need your 4-char access code from the invite text."
   );
@@ -37,7 +44,7 @@ export default function RSVPModal({ children }: { children: React.ReactNode }) {
       }
     };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const trimmedName = form.name.trim();
     const trimmedEmail = form.email.trim();
@@ -47,16 +54,45 @@ export default function RSVPModal({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    setStatus("success");
-    setHint("Locked in. Expect RSVP concierge follow-up within 12 hours.");
+    setStatus("loading");
+    setHint("Submitting your RSVP...");
 
-    // Optionally close modal after success
-    setTimeout(() => {
-      setOpen(false);
-      setForm({ name: "", email: "", code: "" });
-      setStatus("idle");
-      setHint("Need your 4-char access code from the invite text.");
-    }, 2000);
+    try {
+      const response = await fetch(SHEET_BEST_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify([
+          {
+            Name: trimmedName,
+            Email: trimmedEmail,
+            Code: form.code.toUpperCase(),
+            Event: eventName || "Unknown",
+            Timestamp: new Date().toISOString(),
+          },
+        ]),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      setStatus("success");
+      setHint("Locked in. Expect follow-up within 12 hours.");
+
+      // Close modal after success
+      setTimeout(() => {
+        setOpen(false);
+        setForm({ name: "", email: "", code: "" });
+        setStatus("idle");
+        setHint("Need your 4-char access code from the invite text.");
+      }, 2000);
+    } catch (error) {
+      console.error("Error submitting RSVP:", error);
+      setStatus("error");
+      setHint("Something went wrong. Please try again or contact support.");
+    }
   };
 
   return (
@@ -112,17 +148,31 @@ export default function RSVPModal({ children }: { children: React.ReactNode }) {
                 value={form.code}
                 onChange={handleChange("code")}
                 maxLength={4}
-                className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-center text-2xl font-bold tracking-[0.6em] text-black placeholder:text-neutral-500 focus:border-white"
+                className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-center md:text-2xl text-lg font-bold tracking-[0.6em] text-black placeholder:text-neutral-500 focus:border-white"
                 placeholder="A1X3"
                 required
               />
             </label>
             <button
               type="submit"
-              className="w-full rounded-full bg-black py-3 text-base font-semibold uppercase tracking-[0.4em] text-white cursor-pointer transition hover:bg-[#ffdf97]"
+              disabled={status === "loading"}
+              className="w-full rounded-full bg-black py-3 text-base font-semibold uppercase tracking-[0.4em] text-white cursor-pointer transition hover:bg-[#ffdf97] disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Submit RSVP
+              {status === "loading" ? "Submitting..." : "Submit"}
             </button>
+            {status !== "idle" && (
+              <p
+                className={`text-center text-sm font-medium ${
+                  status === "success"
+                    ? "text-green-600"
+                    : status === "error"
+                    ? "text-red-600"
+                    : "text-neutral-600"
+                }`}
+              >
+                {hint}
+              </p>
+            )}
           </form>
         </section>
       </DialogContent>

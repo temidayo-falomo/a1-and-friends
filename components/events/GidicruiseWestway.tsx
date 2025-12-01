@@ -58,7 +58,7 @@ export default function GidicruiseWestway({ event }: GidicruiseWestwayProps) {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-8">
-              <RSVPModal>
+              <RSVPModal eventName={event.eventName}>
                 <button className="rounded-full border cursor-pointer border-cyan-400 bg-gradient-to-r from-cyan-500 to-blue-500 px-8 py-4 text-base md:text-lg uppercase tracking-wide text-white font-medium transition hover:from-cyan-600 hover:to-blue-600 hover:scale-105">
                   RSVP guestlist
                 </button>
@@ -161,7 +161,7 @@ export default function GidicruiseWestway({ event }: GidicruiseWestwayProps) {
             extraordinary night.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <RSVPModal>
+            <RSVPModal eventName={event.eventName}>
               <button className="rounded-full border cursor-pointer border-cyan-400 bg-gradient-to-r from-cyan-500 to-blue-500 px-8 py-4 text-base md:text-lg uppercase tracking-wide text-white font-medium transition hover:from-cyan-600 hover:to-blue-600 hover:scale-105">
                 RSVP guestlist
               </button>

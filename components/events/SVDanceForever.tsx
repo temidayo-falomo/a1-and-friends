@@ -58,7 +58,7 @@ export default function SVDanceForever({ event }: SVDanceForeverProps) {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-8">
-              <RSVPModal>
+              <RSVPModal eventName={event.eventName}>
                 <button className="rounded-full border cursor-pointer border-amber-400 bg-gradient-to-r from-amber-500 to-orange-500 px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:from-amber-600 hover:to-orange-600 hover:scale-105">
                   RSVP guestlist
                 </button>
@@ -161,7 +161,7 @@ export default function SVDanceForever({ event }: SVDanceForeverProps) {
             extraordinary night.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <RSVPModal>
+            <RSVPModal eventName={event.eventName}>
               <button className="rounded-full border cursor-pointer border-amber-400 bg-gradient-to-r from-amber-500 to-orange-500 px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:from-amber-600 hover:to-orange-600 hover:scale-105">
                 RSVP guestlist
               </button>
