@@ -13,11 +13,11 @@ interface CruiseGang44DBProps {
 export default function CruiseGang44DB({ event }: CruiseGang44DBProps) {
   // Select 5 characters to match the flyer
   const flyerCharacters = [
-    "A1.png",
-    "44DB.png",
-    "CG1.png",
-    "DANCE.png",
-    "SV2.png",
+    "/A1 Assets/Guest characters/44DB.png",
+    "/A1 Assets/Guest characters/CG1.png",
+    "/A1 Assets/Guest characters/A1.png",
+    "/A1 Assets/Girlies/Girl 6.png",
+    "/A1 Assets/Girlies/Girl 2.png",
   ];
 
   return (
@@ -113,7 +113,7 @@ export default function CruiseGang44DB({ event }: CruiseGang44DBProps) {
           {flyerCharacters.map((fileName, idx) => (
             <div key={idx} className="flex-1 flex justify-center items-end">
               <Image
-                src={`/A1 Assets/Guest characters/${fileName}`}
+                src={`${fileName}`}
                 alt={`Character ${idx + 1}`}
                 width={200}
                 height={300}
