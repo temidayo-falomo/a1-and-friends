@@ -95,12 +95,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(135,165,255,0.25),transparent_60%)]" />
       </div> */}
 
-      <main className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 pb-24 pt-24 lg:px-10">
+      <main className="relative z-10 mx-auto flex w-full flex-col gap-8 px-6 pb-24 pt-24 lg:px-10">
         <NavBar />
 
         <section
           id="hero-layout"
-          className="flex flex-col items-center gap-12 pt-8"
+          className="flex flex-col items-center gap-12 pt-8 mx-auto md:w-full max-w-7xl"
         >
           <div className="space-y-6 flex flex-col items-center text-center">
             <h1
@@ -130,9 +130,9 @@ export default function Home() {
           </div> */}
         </section>
 
-        <section>
-          <div className="w-full pl-[5%] md:pl-0 md:w-[95%] relative mt-[10px] md:flex overflow-hidden">
-            <div className="w-fit flex md:grid md:grid-cols-4 overflow-x-auto snap-x snap-mandatory">
+        <section className="w-full mx-auto">
+          <div className="w-full pl-[5%] md:pl-0 relative mt-[10px] md:flex overflow-hidden">
+            <div className="w-fit md:items-center md:justify-center md:w-full md:mx-auto flex md:grid md:grid-cols-4 overflow-x-auto snap-x snap-mandatory overflow-y-hidden">
               {events.map((event, index) => {
                 // Create a slight rotation for each card (alternating between -2.5 and 2.5 degrees)
                 const rotation = (index % 2 === 0 ? 1 : -1) * 2.5;

@@ -44,12 +44,12 @@ export default async function EventPage({ params }: EventPageProps) {
           <Link
             href="/"
             prefetch
-            className="absolute top-8 left-6 lg:left-10 flex items-center gap-2 text-white/70 hover:text-white transition-colors z-20"
+            className="absolute top-8 border-2 border-white p-4 rounded-full justify-center left-6 lg:left-10 flex items-center gap-2 text-white/70 hover:text-white transition-colors z-20"
           >
             <FiArrowLeft size={20} />
-            <span className='font-["helvetica-extended"] text-sm'>
-              Back to Events
-            </span>
+            {/* <span className='font-["helvetica-extended"] text-sm'>
+              Back to Home
+            </span> */}
           </Link>
 
           {/* Hero Content */}
