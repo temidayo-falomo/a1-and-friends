@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
 import Link from "next/link";
 import RSVPModal from "@/components/rsvp-modal";
+import ReserveTableModal from "@/components/reserve-table-modal";
 import { Event } from "@/data/events";
 import Clouds from "@/components/Clouds";
 import { FloatingAudioButton } from "../FloatingAudioButton";
@@ -99,9 +100,11 @@ export default function CruiseGang44DB({ event }: CruiseGang44DBProps) {
                   RSVP guestlist
                 </button>
               </RSVPModal>
-              <button className="rounded-full cursor-pointer border-2 border-black px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:bg-black hover:text-white hover:scale-105">
-                Reserve a table
-              </button>
+              <ReserveTableModal>
+                <button className="rounded-full cursor-pointer border-2 border-black px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:bg-black hover:text-white hover:scale-105">
+                  Reserve a table
+                </button>
+              </ReserveTableModal>
             </div>
           </div>
         </div>
@@ -207,9 +210,11 @@ export default function CruiseGang44DB({ event }: CruiseGang44DBProps) {
                 RSVP guestlist
               </button>
             </RSVPModal>
-            <button className="rounded-full cursor-pointer border-2 border-black px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:bg-black hover:text-white hover:scale-105">
-              Reserve a table
-            </button>
+            <ReserveTableModal>
+              <button className="rounded-full cursor-pointer border-2 border-black px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:bg-black hover:text-white hover:scale-105">
+                Reserve a table
+              </button>
+            </ReserveTableModal>
           </div>
         </div>
       </section>

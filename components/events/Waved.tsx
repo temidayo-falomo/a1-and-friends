@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
 import Link from "next/link";
 import RSVPModal from "@/components/rsvp-modal";
+import ReserveTableModal from "@/components/reserve-table-modal";
 import { Event } from "@/data/events";
 import CloudsDark from "@/components/CloudsDark";
 import { FloatingAudioButton } from "../FloatingAudioButton";
@@ -104,9 +105,11 @@ export default function Waved({ event }: WavedProps) {
                   RSVP guestlist
                 </button>
               </RSVPModal>
-              <button className="rounded-full cursor-pointer border-2 border-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-white font-medium transition hover:bg-white hover:text-black hover:scale-105">
-                Reserve a table
-              </button>
+              <ReserveTableModal>
+                <button className="rounded-full cursor-pointer border-2 border-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-white font-medium transition hover:bg-white hover:text-black hover:scale-105">
+                  Reserve a table
+                </button>
+              </ReserveTableModal>
             </div>
           </div>
         </div>
@@ -209,9 +212,11 @@ export default function Waved({ event }: WavedProps) {
                 RSVP guestlist
               </button>
             </RSVPModal>
-            <button className="rounded-full cursor-pointer border-2 border-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-white font-medium transition hover:bg-white hover:text-black hover:scale-105">
-              Reserve a table
-            </button>
+            <ReserveTableModal>
+              <button className="rounded-full cursor-pointer border-2 border-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-white font-medium transition hover:bg-white hover:text-black hover:scale-105">
+                Reserve a table
+              </button>
+            </ReserveTableModal>
           </div>
         </div>
       </section>
