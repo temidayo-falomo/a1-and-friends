@@ -2,7 +2,7 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const codePattern = /^[A-Z0-9]{4}$/;
 
@@ -57,6 +57,7 @@ export default function RSVPModal({ children }: { children: React.ReactNode }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogTitle className="sr-only">RSVP</DialogTitle>
       <DialogContent className="max-w-4xl bg-transparent border-none p-0 shadow-none font-['helvetica-extended']">
         <section className="rounded-[32px] border border-white/10 bg-white mx-4 md:mx-0 px-4 py-8 md:px-8 backdrop-blur lg:grid-cols-2">
           {/* <div className="space-y-3">
@@ -95,7 +96,7 @@ export default function RSVPModal({ children }: { children: React.ReactNode }) {
                 value={form.email}
                 onChange={handleChange("email")}
                 className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-base font-bold text-black placeholder:text-neutral-500 focus:border-white"
-                placeholder="amara@clubstudio.africa"
+                placeholder="amaraoni@gmail.com"
                 required
               />
             </label>
