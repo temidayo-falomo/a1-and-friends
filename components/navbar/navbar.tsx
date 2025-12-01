@@ -49,7 +49,7 @@ const NavBar: React.FC = () => {
         className={
           "w-full max-w-7xl flex justify-center items-center left-1/2 -translate-x-1/2 top-0 z-[100] mx-auto fixed  " +
           (pathname !== "/about" && navbarBackground
-            ? "bg-black border-grid border-b-[0px]"
+            ? "bg-transparent border-grid border-b-[0px]"
             : pathname !== "/about" && !navbarBackground
             ? "border-grid"
             : pathname === "/about" && !navbarBackground

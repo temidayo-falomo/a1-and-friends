@@ -2,7 +2,12 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const codePattern = /^[A-Z0-9]{4}$/;
 
@@ -78,8 +83,8 @@ export default function RSVPModal({ children }: { children: React.ReactNode }) {
             onSubmit={handleSubmit}
             className="space-y-6 rounded-2xl w-full"
           >
-            <label className="block text-base font-bold uppercase tracking-[0.2em] text-black">
-              Full Name
+            <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
+              Type your Full Name
               <input
                 type="text"
                 value={form.name}
@@ -89,8 +94,8 @@ export default function RSVPModal({ children }: { children: React.ReactNode }) {
                 required
               />
             </label>
-            <label className="block text-base font-bold uppercase tracking-[0.2em] text-black">
-              Email
+            <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
+              Type your Email
               <input
                 type="email"
                 value={form.email}
@@ -100,8 +105,8 @@ export default function RSVPModal({ children }: { children: React.ReactNode }) {
                 required
               />
             </label>
-            <label className="block text-base font-bold uppercase tracking-[0.2em] text-black">
-              4-char code
+            <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
+              Type your 4-digit pin
               <input
                 type="text"
                 value={form.code}
@@ -118,17 +123,6 @@ export default function RSVPModal({ children }: { children: React.ReactNode }) {
             >
               Submit RSVP
             </button>
-            <p
-              className={`text-xs font-bold uppercase tracking-[0.35em] ${
-                status === "error"
-                  ? "text-[#ff6b6b]"
-                  : status === "success"
-                  ? "text-[#7cffb1]"
-                  : "text-black"
-              }`}
-            >
-              {hint}
-            </p>
           </form>
         </section>
       </DialogContent>

@@ -6,6 +6,8 @@ import NavBar from "@/components/navbar/navbar";
 import ObjViewer from "@/components/obj-viewer";
 import EventCard from "@/components/event-card";
 import { events } from "@/data/events";
+import LightRays from "@/components/LightRays";
+import Ballpit from "@/components/Ballpit";
 
 const codePattern = /^[A-Z0-9]{4}$/;
 
@@ -89,30 +91,33 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen bg-black text-white">
+    <div className="relative min-h-screen text-black">
       {/* <div className="pointer-events-none absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(247,195,87,0.35),transparent_65%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(135,165,255,0.25),transparent_60%)]" />
       </div> */}
+      <div className="fixed inset-0 bg-gradient-to-b from-[#FFE5D4] via-[#F5D5C4] to-[#E8D5F0] -z-10" />
 
-      <main className="relative z-10 mx-auto flex w-full flex-col gap-8 px-6 pb-24 pt-24 lg:px-10">
-        <NavBar />
+      <main className="relative z-10 mx-auto flex w-full flex-col gap-2 md:gap-8 px-6 pb-24 pt-6 md:pt-24 md:px-10">
+        {/* <NavBar /> */}
 
         <section
           id="hero-layout"
           className="flex flex-col items-center gap-12 pt-8 mx-auto md:w-full max-w-7xl"
         >
           <div className="space-y-6 flex flex-col items-center text-center">
-            <h1
-              className="md:text-7xl text-5xl font-['helvetica-extended'] relative leading-tight text-white lg:text-8xl text-center font-bold"
-              // style={{ fontFamily: "var(--font-canela)" }}
-            >
-              A1 & Friends
-            </h1>
+            <Image
+              className="relative w-[200px]"
+              src="/A1 Assets/LOGOS/A1/A1-3.png"
+              alt="A1 Icon"
+              width={200}
+              height={200}
+              priority
+            />
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center w-full px-4 justify-center items-center">
-              <p className="text-sm md:text-base text-center uppercase tracking-[0.3em] text-neutral-200">
-                Jan 1 · VI Lagos
+              <p className="text-base md:text-xl text-center uppercase tracking-[0.3em] text-black font-medium">
+                December 2025 · The Vault
               </p>
             </div>
           </div>
@@ -150,6 +155,45 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Character illustrations at bottom */}
+        {/* <section className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 pb-16 md:pb-24 mt-12">
+          <div className="relative flex items-end justify-center gap-2 md:gap-4 w-full">
+            {guestCharacters.slice(0, 5).map((fileName, idx) => (
+              <div key={idx} className="flex-1 flex justify-center items-end">
+                <Image
+                  src={`/A1 Assets/Guest characters/${fileName}`}
+                  alt={`Character ${idx + 1}`}
+                  width={200}
+                  height={300}
+                  className="w-full h-auto max-w-[100px] md:max-w-[150px] lg:max-w-[180px] object-contain hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </section> */}
+
+        {/* <div className="relative flex items-center flex-wrap justify-center gap-6 md:gap-12 w-full mt-8">
+          {guestCharacters.map((fileName, idx) => (
+            <div
+              key={idx}
+              className="relative hover:scale-110 transition-transform duration-300"
+              style={{
+                transform: `rotate(${
+                  (idx % 2 === 0 ? 1 : -1) * (idx % 3) * 3
+                }deg)`,
+              }}
+            >
+              <Image
+                src={`/A1 Assets/Guest characters/${fileName}`}
+                alt={`Guest character ${fileName}`}
+                width={120}
+                height={120}
+                className="w-16 md:w-24 lg:w-28 object-contain drop-shadow-lg"
+              />
+            </div>
+          ))}
+        </div> */}
       </main>
     </div>
   );

@@ -80,6 +80,7 @@ const canela = localFont({
   variable: "--font-canela",
 });
 
+
 export const metadata: Metadata = {
   title: "Exhibit | A1 & Friends",
   description: "The Future of African Entertainment",
@@ -95,7 +96,7 @@ export default function RootLayout({
       <body
         className={`${raleway.variable} ${geistMono.variable} ${canela.variable} antialiased`}
       >
-        <GridBg />
+        {/* <GridBg /> */}
         {children}
       </body>
     </html>

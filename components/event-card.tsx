@@ -53,7 +53,7 @@ export default function EventCard({
             codedTextRef.current?.startAnimation();
           }}
           className={
-            "w-[95%] h-[95%] rounded-[8px] p-8 flex flex-col justify-between hover:backdrop-blur-[5px] absolute bg-black/30 duration-500 " +
+            "w-[95%] h-[95%] rounded-[8px] p-8 flex flex-col justify-between hover:backdrop-blur-[5px] absolute bg-black/10 duration-500 " +
             (hover ? "ml-8 -mt-8" : "")
           }
         >
@@ -63,7 +63,7 @@ export default function EventCard({
               text={type}
               className='font-["helvetica-extended"] font-[400] text-black text-[12px] 2xl:text-[14px] bg-white px-3 py-1 w-fit rounded-full'
             /> */}
-            <h3 className='font-["helvetica-extended"] text-[28px] 2xl:text-[32px] font-[400] mt-[30px] leading-[1.2]'>
+            <h3 className='font-["helvetica-extended"] opacity-0 text-[28px] 2xl:text-[32px] font-[400] mt-[30px] leading-[1.2]'>
               {title}{" "}
             </h3>
           </div>
