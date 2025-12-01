@@ -13,7 +13,7 @@ interface WavedProps {
 export default function Waved({ event }: WavedProps) {
   // Select 5 characters to match the flyer - using available characters
   const flyerCharacters = [
-    "/A1 Assets/Girlies/Girl 4.png",
+    "/A1 Assets/Guest characters/44DB2.png",
     "/A1 Assets/Guest characters/CG1.png",
     "/A1 Assets/Guest characters/A1.png",
     "/A1 Assets/Girlies/Girl 6.png",

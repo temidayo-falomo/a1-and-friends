@@ -13,7 +13,7 @@ interface CruiseGang44DBProps {
 export default function CruiseGang44DB({ event }: CruiseGang44DBProps) {
   // Select 5 characters to match the flyer
   const flyerCharacters = [
-    "/A1 Assets/Guest characters/44DB2.png",
+    "/A1 Assets/Guest characters/44DB.png",
     "/A1 Assets/Guest characters/CG1.png",
     "/A1 Assets/Guest characters/A1.png",
     "/A1 Assets/Girlies/Girl 6.png",
