@@ -134,7 +134,7 @@ export default function GidicruiseWestway({ event }: GidicruiseWestwayProps) {
                 VI Lagos
               </p>
               <p className='font-["helvetica-extended"] text-lg text-white/70'>
-                Victoria Island, Lagos
+                Lagos
               </p>
             </div>
 

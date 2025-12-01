@@ -57,21 +57,30 @@ export default function CruiseGang44DB({ event }: CruiseGang44DBProps) {
           <div className="flex flex-col items-center justify-center min-h-[70vh] text-center space-y-8 md:space-y-12">
             {/* Logos row */}
             <div className="flex items-center justify-center gap-4 md:gap-6">
-              <Image
-                className="relative w-10 h-10 md:w-12 md:h-12"
-                src="/A1 Assets/LOGOS/CG Logo PNG.png"
-                alt="CG Logo"
-                width={100}
-                height={100}
-                priority
-              />
-
+              <div className="circle relative size-[60px] md:size-[80px] p-1 bg-black rounded-full">
+                <Image
+                  className="relative object-contain"
+                  src="/A1 Assets/LOGOS/44-mascot.png"
+                  alt="CG Logo"
+                  width={100}
+                  height={100}
+                  priority
+                />
+              </div>
               <Image
                 className="relative w-24 h-16 md:w-32 md:h-20"
                 src="/A1 Assets/LOGOS/A1/A1-3.png"
                 alt="A1 & Friends Logo"
                 width={128}
                 height={80}
+                priority
+              />
+              <Image
+                className="relative w-10 h-10 md:w-12 md:h-12"
+                src="/A1 Assets/LOGOS/CG Logo PNG.png"
+                alt="CG Logo"
+                width={100}
+                height={100}
                 priority
               />
             </div>
@@ -191,7 +200,7 @@ export default function CruiseGang44DB({ event }: CruiseGang44DBProps) {
                 THE VAULT SOCIAL HOUSE
               </p>
               <p className='font-["helvetica-extended"] text-lg text-black/70'>
-                Victoria Island, Lagos
+                Lagos
               </p>
             </div>
           </div>
