@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getEventById } from "@/data/events";
 import { FiArrowLeft } from "react-icons/fi";
 import Link from "next/link";
+import RSVPModal from "@/components/rsvp-modal";
 
 interface EventPageProps {
   params: Promise<{
@@ -70,9 +71,11 @@ export default async function EventPage({ params }: EventPageProps) {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-8">
-              <button className="rounded-full border cursor-pointer border-white bg-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:bg-white/90 hover:scale-105">
-                RSVP guestlist
-              </button>
+              <RSVPModal>
+                <button className="rounded-full border cursor-pointer border-white bg-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:bg-white/90 hover:scale-105">
+                  RSVP guestlist
+                </button>
+              </RSVPModal>
               <button className="rounded-full cursor-pointer border-2 border-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-white font-medium transition hover:bg-white/10 hover:border-[#ffc659] hover:text-[#ffc659] hover:scale-105">
                 Reserve a table
               </button>
@@ -171,9 +174,11 @@ export default async function EventPage({ params }: EventPageProps) {
             extraordinary night.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <button className="rounded-full border cursor-pointer border-white bg-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:bg-white/90 hover:scale-105">
-              RSVP guestlist
-            </button>
+            <RSVPModal>
+              <button className="rounded-full border cursor-pointer border-white bg-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:bg-white/90 hover:scale-105">
+                RSVP guestlist
+              </button>
+            </RSVPModal>
             <button className="rounded-full cursor-pointer border-2 border-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-white font-medium transition hover:bg-white/10 hover:border-[#ffc659] hover:text-[#ffc659] hover:scale-105">
               Reserve a table
             </button>
