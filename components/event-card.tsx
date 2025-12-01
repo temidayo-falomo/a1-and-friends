@@ -58,11 +58,11 @@ export default function EventCard({
           }
         >
           <div className="flex flex-col">
-            <CodedText
+            {/* <CodedText
               ref={codedTextRef}
               text={type}
               className='font-["helvetica-extended"] font-[400] text-black text-[12px] 2xl:text-[14px] bg-white px-3 py-1 w-fit rounded-full'
-            />
+            /> */}
             <h3 className='font-["helvetica-extended"] text-[28px] 2xl:text-[32px] font-[400] mt-[30px] leading-[1.2]'>
               {title}{" "}
             </h3>

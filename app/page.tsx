@@ -111,7 +111,7 @@ export default function Home() {
             </h1>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center w-full px-4 justify-center items-center">
-              <p className="text-xs md:text-base text-center uppercase tracking-[0.3em] text-neutral-400">
+              <p className="text-sm md:text-base text-center uppercase tracking-[0.3em] text-neutral-200">
                 Jan 1 · VI Lagos
               </p>
             </div>

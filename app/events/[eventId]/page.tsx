@@ -57,7 +57,7 @@ export default async function EventPage({ params }: EventPageProps) {
           <div className="flex flex-col items-center justify-center min-h-[80vh] text-center space-y-8">
             <div className="space-y-6">
               <span className='inline-block font-["helvetica-extended"] font-[400] text-black text-sm bg-white px-4 py-2 rounded-full'>
-                {event.eventCategory}
+                A1 & Friends
               </span>
 
               <h1 className='font-["helvetica-extended"] text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-[400] leading-[0.9] tracking-tight'>
