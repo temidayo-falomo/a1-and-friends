@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import CodedText, { CodedTextHandle } from "@/utils/decode-text";
 import { TransitionLink } from "@/utils/transition-link";
 import { useAudio } from "./AudioProvider";
+import Link from "next/link";
 
 interface ImageProps {
   img: string;
@@ -23,7 +24,6 @@ export default function EventCard({
   href,
   rotation = 0,
 }: ImageProps) {
-  
   const { play } = useAudio();
   const [hover, setHover] = useState(false);
   const codedTextRef = useRef<CodedTextHandle>(null);
@@ -43,7 +43,8 @@ export default function EventCard({
       className="w-[90%] md:w-full shrink-0 flex justify-center"
       style={{ transform: `rotate(${rotation}deg)` }}
     >
-      <a
+      <Link
+        prefetch
         href={href}
         className="w-[95%] md:w-[86%] shrink-0 snap-start bordered-container cursor-pointer mt-[60px] h-[330px] 2xl:h-[480px] flex justify-center items-center relative"
       >
@@ -90,7 +91,7 @@ export default function EventCard({
           width={600}
           height={420}
         />
-      </a>
+      </Link>
     </div>
   );
 }
