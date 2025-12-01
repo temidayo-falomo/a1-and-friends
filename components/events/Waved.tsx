@@ -4,6 +4,7 @@ import Link from "next/link";
 import RSVPModal from "@/components/rsvp-modal";
 import { Event } from "@/data/events";
 import CloudsDark from "@/components/CloudsDark";
+import { FloatingAudioButton } from "../FloatingAudioButton";
 
 interface WavedProps {
   event: Event;
@@ -23,6 +24,8 @@ export default function Waved({ event }: WavedProps) {
     <div className="relative min-h-screen bg-black text-white overflow-hidden">
       {/* Clouds overlay */}
       <CloudsDark />
+
+      <FloatingAudioButton />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">

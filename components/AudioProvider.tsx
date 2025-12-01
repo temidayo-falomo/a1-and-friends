@@ -10,6 +10,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { usePathname } from "next/navigation";
 
 type AudioContextValue = {
   isPlaying: boolean;
@@ -30,8 +31,66 @@ export const useAudio = () => {
 };
 
 export const AudioProvider = ({ children }: { children: ReactNode }) => {
+  const pathname = usePathname();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const previousSrcRef = useRef<string | null>(null);
+  const wasPlayingRef = useRef(false);
+
+  // Determine which audio file to play based on the route
+  const getAudioSrc = useCallback(() => {
+    if (pathname?.includes("/events/cruise-gang-44db")) {
+      return "/Idanski.mp3";
+    } else if (pathname?.includes("/events/waved")) {
+      return "/song.mp3";
+    }
+    // Default to idanski for home page or other pages
+    return "/Idanski.mp3";
+  }, [pathname]);
+
+  const audioSrc = getAudioSrc();
+
+  // Initialize audio source on mount and handle route changes
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const newSrc = getAudioSrc();
+    
+    // Get current source path (handle both relative and absolute URLs)
+    let currentSrc = "";
+    if (audio.src) {
+      try {
+        const url = new URL(audio.src);
+        currentSrc = url.pathname;
+      } catch {
+        // If it's already a relative path
+        currentSrc = audio.src;
+      }
+    }
+    
+    // Only update if the source actually changed
+    if (currentSrc !== newSrc) {
+      const wasPlaying = isPlaying;
+      
+      // Update the source
+      audio.src = newSrc;
+      audio.load();
+      
+      // Restore playback state if it was playing
+      if (wasPlaying) {
+        // Use a small timeout to ensure the audio is loaded
+        setTimeout(() => {
+          const playPromise = audio.play();
+          if (playPromise instanceof Promise) {
+            playPromise.catch(() => undefined);
+          }
+        }, 100);
+      }
+    }
+
+    previousSrcRef.current = newSrc;
+  }, [audioSrc, getAudioSrc, isPlaying]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -85,7 +144,7 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AudioContext.Provider value={value}>
-      <audio ref={audioRef} src="/audio/fun.mp3" preload="auto" />
+      <audio ref={audioRef} preload="auto" loop />
       {children}
     </AudioContext.Provider>
   );

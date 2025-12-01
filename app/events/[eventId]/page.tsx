@@ -20,6 +20,7 @@ export default async function EventPage({ params }: EventPageProps) {
   }
 
   // Render the appropriate component based on eventId
+  
   switch (eventId) {
     case "cruise-gang-44db":
       return <CruiseGang44DB event={event} />;

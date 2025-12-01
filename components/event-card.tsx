@@ -6,6 +6,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import CodedText, { CodedTextHandle } from "@/utils/decode-text";
 import { TransitionLink } from "@/utils/transition-link";
+import { useAudio } from "./AudioProvider";
 
 interface ImageProps {
   img: string;
@@ -22,6 +23,8 @@ export default function EventCard({
   href,
   rotation = 0,
 }: ImageProps) {
+  
+  const { play } = useAudio();
   const [hover, setHover] = useState(false);
   const codedTextRef = useRef<CodedTextHandle>(null);
   const variant = {
@@ -36,6 +39,7 @@ export default function EventCard({
   };
   return (
     <div
+      onClick={() => play()}
       className="w-[90%] md:w-full shrink-0 flex justify-center"
       style={{ transform: `rotate(${rotation}deg)` }}
     >

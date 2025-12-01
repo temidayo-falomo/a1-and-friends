@@ -4,6 +4,7 @@ import Link from "next/link";
 import RSVPModal from "@/components/rsvp-modal";
 import { Event } from "@/data/events";
 import Clouds from "@/components/Clouds";
+import { FloatingAudioButton } from "../FloatingAudioButton";
 
 interface CruiseGang44DBProps {
   event: Event;
@@ -21,6 +22,7 @@ export default function CruiseGang44DB({ event }: CruiseGang44DBProps) {
 
   return (
     <div className="relative min-h-screen text-black overflow-hidden">
+      <FloatingAudioButton />
       {/* Light green gradient background matching flyer */}
       <div className="fixed inset-0 bg-gradient-to-b from-[#B8E6B8] via-[#A8D8A8] to-[#98C898] -z-10" />
 

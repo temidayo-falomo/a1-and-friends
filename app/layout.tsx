@@ -97,10 +97,7 @@ export default function RootLayout({
       <body
         className={`${raleway.variable} ${geistMono.variable} ${canela.variable} antialiased`}
       >
-        <AudioProvider>
-          {children}
-          <FloatingAudioButton />
-        </AudioProvider>
+        <AudioProvider>{children}</AudioProvider>
       </body>
     </html>
   );
