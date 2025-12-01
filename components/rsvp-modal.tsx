@@ -16,7 +16,7 @@ const SHEET_BEST_API =
 // Mapping of event names to their unique RSVP codes
 const EVENT_CODES: Record<string, string> = {
   Waved: "A1WV",
-  "Cruise Gang & 44DB": "A144",
+  "Cruise Gang & 44DB": "44CG",
 };
 
 interface RSVPModalProps {

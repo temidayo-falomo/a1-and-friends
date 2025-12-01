@@ -14,11 +14,11 @@ interface WavedProps {
 export default function Waved({ event }: WavedProps) {
   // Select 5 characters to match the flyer - using available characters
   const flyerCharacters = [
-    "/A1 Assets/Guest characters/44DB2.png",
-    "/A1 Assets/Guest characters/44DB.png",
-    "/A1 Assets/Guest characters/A1.png",
-    "/A1 Assets/Girlies/Girl 6.png",
     "/A1 Assets/Girlies/Girl 2.png",
+    "/A1 Assets/Girlies/Girl 1.png",
+    "/A1 Assets/Guest characters/A1.png",
+    "/A1 Assets/Guest characters/44DB2.png",
+    "/A1 Assets/Girlies/Girl 3.png",
   ];
 
   return (
@@ -125,7 +125,11 @@ export default function Waved({ event }: WavedProps) {
                 alt={`Character ${idx + 1}`}
                 width={200}
                 height={300}
-                className="w-full h-auto max-w-[120px] md:max-w-[180px] object-contain"
+                className={`w-full h-auto object-contain ${
+                  idx === 2
+                    ? "max-w-[140px] md:max-w-[210px]"
+                    : "max-w-[120px] md:max-w-[180px]"
+                }`}
               />
             </div>
           ))}
