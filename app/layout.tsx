@@ -3,6 +3,8 @@ import { Geist_Mono, Raleway } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import GridBg from "@/components/grid-bg";
+import { AudioProvider } from "@/components/AudioProvider";
+import { FloatingAudioButton } from "@/components/FloatingAudioButton";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -80,7 +82,6 @@ const canela = localFont({
   variable: "--font-canela",
 });
 
-
 export const metadata: Metadata = {
   title: "Exhibit | A1 & Friends",
   description: "The Future of African Entertainment",
@@ -96,8 +97,10 @@ export default function RootLayout({
       <body
         className={`${raleway.variable} ${geistMono.variable} ${canela.variable} antialiased`}
       >
-        {/* <GridBg /> */}
-        {children}
+        <AudioProvider>
+          {children}
+          <FloatingAudioButton />
+        </AudioProvider>
       </body>
     </html>
   );
