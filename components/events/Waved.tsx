@@ -58,7 +58,7 @@ export default function Waved({ event }: WavedProps) {
             <div className="space-y-6 md:space-y-8">
               {/* Main title - A1 & FRIENDS with glowing yellow effect */}
               <h1
-                className='font-["helvetica-extended"] text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-[700] leading-[0.9] tracking-tight'
+                className='font-["helvetica-extended"] text-[4.5rem] md:text-[6.75rem] lg:text-[9rem] xl:text-[12rem] font-[700] leading-[0.9] tracking-tight'
                 style={{
                   color: "#FFD700",
                   textShadow:

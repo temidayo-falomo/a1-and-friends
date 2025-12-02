@@ -141,36 +141,36 @@ export default function RSVPModal({ children, eventName }: RSVPModalProps) {
             className="space-y-6 rounded-2xl w-full"
           >
             <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
-              Type your Full Name
+              FULL NAME
               <input
                 type="text"
                 value={form.name}
                 onChange={handleChange("name")}
                 className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-base font-bold text-black placeholder:text-neutral-500 focus:border-white"
-                placeholder="Amara Oni"
+                placeholder="TYPE YOUR FULL NAME"
                 required
               />
             </label>
             <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
-              Type your Email
+              Email Address
               <input
                 type="email"
                 value={form.email}
                 onChange={handleChange("email")}
                 className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-base font-bold text-black placeholder:text-neutral-500 focus:border-white"
-                placeholder="amaraoni@gmail.com"
+                placeholder="TYPE YOUR EMAIL"
                 required
               />
             </label>
             <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
-              Type your 4-digit pin
+              4 DIGIT PIN
               <input
                 type="text"
                 value={form.code}
                 onChange={handleChange("code")}
                 maxLength={4}
-                className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-center md:text-2xl text-lg font-bold tracking-[0.6em] text-black placeholder:text-neutral-500 focus:border-white"
-                placeholder="A1X3"
+                className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-center md:text-xl text-base font-bold tracking-[0.3em] text-black placeholder:text-neutral-500 focus:border-white"
+                placeholder="TYPE YOUR 4 DIGIT PIN"
                 required
               />
             </label>

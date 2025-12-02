@@ -119,13 +119,13 @@ export default function ReserveTableModal({
             </div>
 
             <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
-             Full Name
+             FULL NAME
               <input
                 type="text"
                 value={form.name}
                 onChange={handleChange("name")}
                 className="mt-2 w-full rounded-xl border-2 border-black bg-white/90 px-4 py-3 text-base font-bold text-black placeholder:text-neutral-500 focus:border-black focus:bg-white focus:outline-none"
-                placeholder="Amara Oni"
+                placeholder="TYPE YOUR FULL NAME"
                 required
               />
             </label>
@@ -136,7 +136,7 @@ export default function ReserveTableModal({
                 value={form.email}
                 onChange={handleChange("email")}
                 className="mt-2 w-full rounded-xl border-2 border-black bg-white/90 px-4 py-3 text-base font-bold text-black placeholder:text-neutral-500 focus:border-black focus:bg-white focus:outline-none"
-                placeholder="amaraoni@gmail.com"
+                placeholder="TYPE YOUR EMAIL"
                 required
               />
             </label>
@@ -147,7 +147,7 @@ export default function ReserveTableModal({
                 value={form.whatsapp}
                 onChange={handleChange("whatsapp")}
                 className="mt-2 w-full rounded-xl border-2 border-black bg-white/90 px-4 py-3 text-base font-bold text-black placeholder:text-neutral-500 focus:border-black focus:bg-white focus:outline-none"
-                placeholder="+234 812 345 6789"
+                placeholder="TYPE YOUR WHATSAPP NUMBER"
                 required
               />
             </label>

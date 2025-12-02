@@ -44,7 +44,7 @@ export default function GidicruiseWestway({ event }: GidicruiseWestwayProps) {
           {/* Hero Content */}
           <div className="flex flex-col items-center justify-center min-h-[80vh] text-center space-y-8">
             <div className="space-y-6">
-              <span className='inline-block font-["helvetica-extended"] font-[400] text-black text-sm bg-gradient-to-r from-cyan-400 to-blue-400 px-4 py-2 rounded-full'>
+              <span className='inline-block font-["helvetica-extended"] font-[400] text-black text-[1.3125rem] bg-gradient-to-r from-cyan-400 to-blue-400 px-4 py-2 rounded-full'>
                 A1 & Friends
               </span>
 
@@ -122,7 +122,7 @@ export default function GidicruiseWestway({ event }: GidicruiseWestwayProps) {
                 {event.eventDate}
               </p>
               <p className='font-["helvetica-extended"] text-lg text-white/70'>
-                11pm to later
+                11PM TILL LATE
               </p>
             </div>
 

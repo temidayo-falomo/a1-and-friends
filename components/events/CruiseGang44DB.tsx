@@ -87,7 +87,7 @@ export default function CruiseGang44DB({ event }: CruiseGang44DBProps) {
 
             <div className="space-y-6 md:space-y-8">
               {/* Main title */}
-              <h1 className='font-["helvetica-extended"] text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-[700] text-black leading-[0.9] tracking-tight'>
+              <h1 className='font-["helvetica-extended"] text-[4.5rem] md:text-[6.75rem] lg:text-[9rem] xl:text-[12rem] font-[700] text-black leading-[0.9] tracking-tight'>
                 A1 & FRIENDS
               </h1>
 
@@ -188,7 +188,7 @@ export default function CruiseGang44DB({ event }: CruiseGang44DBProps) {
                 {event.eventDate}
               </p>
               <p className='font-["helvetica-extended"] text-lg text-black/70'>
-                11pm to later
+                11PM TILL LATE
               </p>
             </div>
 

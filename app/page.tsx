@@ -116,7 +116,7 @@ export default function Home() {
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center w-full px-4 justify-center items-center">
               <p className="text-base md:text-xl text-center uppercase tracking-[0.3em] text-black font-medium">
-                December 2025 · The Vault
+                December 2025 · THE VAULT SOCIAL HOUSE
               </p>
             </div>
           </div>
@@ -140,13 +140,14 @@ export default function Home() {
               {events.map((event, index) => {
                 // Create a slight rotation for each card (alternating between -2.5 and 2.5 degrees)
                 const rotation = (index % 2 === 0 ? 1 : -1) * 2.5;
+                const isComingSoon = event.eventId.startsWith("coming-soon");
                 return (
                   <EventCard
                     key={event.eventId}
                     img={event.eventImage || ""}
-                    title={event.eventName}
+                    title={isComingSoon ? "Coming Soon" : event.eventName}
                     type={event.eventCategory || "General"}
-                    href={`events/${event.eventId}`}
+                    href={isComingSoon ? "#" : `events/${event.eventId}`}
                     rotation={rotation}
                   />
                 );

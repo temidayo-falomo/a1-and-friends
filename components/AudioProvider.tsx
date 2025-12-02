@@ -42,6 +42,8 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
     if (pathname?.includes("/events/cruise-gang-44db")) {
       return "/Idanski.mp3";
     } else if (pathname?.includes("/events/waved")) {
+      return "/shakabulizzy.mp3";
+    } else if (pathname?.includes("/events/sv-dance-forever")) {
       return "/song.mp3";
     }
     // Default to idanski for home page or other pages

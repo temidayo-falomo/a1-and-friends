@@ -21,20 +21,20 @@ export const events: Event[] = [
     eventCategory: "Event",
     eventImage: "/posters/waved.png",
   },
-  // {
-  //   eventId: "sv-dance-forever",
-  //   eventName: "SV Presents: The Dance Is Forever",
-  //   eventDate: "25th December",
-  //   eventCategory: "Event",
-  //   eventImage: "/A1 Assets/Guest characters/SV2.png",
-  // },
-  // {
-  //   eventId: "gidicruise-westway",
-  //   eventName: "Gidicruise & Westway",
-  //   eventDate: "1st January",
-  //   eventCategory: "Event",
-  //   eventImage: "/A1 Assets/Guest characters/Gidi cruise.png",
-  // },
+  {
+    eventId: "coming-soon-1",
+    eventName: "Coming Soon",
+    eventDate: "TBA",
+    eventCategory: "Event",
+    eventImage: "/paper.webp", // Placeholder image
+  },
+  {
+    eventId: "coming-soon-2",
+    eventName: "Coming Soon",
+    eventDate: "TBA",
+    eventCategory: "Event",
+    eventImage: "/paper.webp", // Placeholder image
+  },
 ];
 
 export function getEventById(eventId: string): Event | undefined {
