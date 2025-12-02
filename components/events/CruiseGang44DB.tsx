@@ -68,11 +68,11 @@ export default function CruiseGang44DB({ event }: CruiseGang44DBProps) {
                 />
               </div>
               <Image
-                className="relative w-24 h-16 md:w-32 md:h-20"
+                className="relative w-[10rem] md:w-48"
                 src="/A1 Assets/LOGOS/A1/A1-3.png"
                 alt="A1 & Friends Logo"
-                width={128}
-                height={80}
+                width={192}
+                height={120}
                 priority
               />
               <Image
