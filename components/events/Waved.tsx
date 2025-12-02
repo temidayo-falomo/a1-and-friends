@@ -83,7 +83,7 @@ export default function Waved({ event }: WavedProps) {
               {/* waved! with metallic gold/orange glossy effect */}
               <div className="flex items-center justify-center">
                 <Image
-                  className="relative w-[200px]"
+                  className="relative w-[250px] md:w-[500px]"
                   src="/A1 Assets/LOGOS/waved-prev.png"
                   alt="waved!"
                   width={200}
