@@ -1,14 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
+import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 const ObjViewer = ({
   objPath,
+  mtlPath,
   width = 800,
   height = 600,
 }: {
   objPath: string;
+  mtlPath?: string;
   width?: number;
   height?: number;
 }) => {
@@ -41,38 +44,90 @@ const ObjViewer = ({
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
 
+    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+    directionalLight2.position.set(-5, -5, -5);
+    scene.add(directionalLight2);
+
     // Controls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
 
-    // Load OBJ
-    const loader = new OBJLoader();
-    loader.load(
-      objPath,
-      (object) => {
-        // Center and scale the object
-        const box = new THREE.Box3().setFromObject(object);
-        const center = box.getCenter(new THREE.Vector3());
-        const size = box.getSize(new THREE.Vector3());
+    // Load model
+    if (mtlPath) {
+      // Load MTL first, then OBJ
+      const mtlLoader = new MTLLoader();
+      mtlLoader.load(
+        mtlPath,
+        (materials) => {
+          materials.preload();
 
-        const maxDim = Math.max(size.x, size.y, size.z);
-        const scale = 4 / maxDim;
-        object.scale.multiplyScalar(scale);
+          const objLoader = new OBJLoader();
+          objLoader.setMaterials(materials);
+          objLoader.load(
+            objPath,
+            (object) => {
+              // Center and scale the object
+              const box = new THREE.Box3().setFromObject(object);
+              const center = box.getCenter(new THREE.Vector3());
+              const size = box.getSize(new THREE.Vector3());
 
-        object.position.sub(center.multiplyScalar(scale));
+              const maxDim = Math.max(size.x, size.y, size.z);
+              const scale = 4 / maxDim;
+              object.scale.multiplyScalar(scale);
 
-        scene.add(object);
-        setLoading(false);
-      },
-      (xhr) => {
-        console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-      },
-      (error) => {
-        console.error("Error loading OBJ:", error);
-        setError("Failed to load 3D model");
-        setLoading(false);
-      }
-    );
+              object.position.sub(center.multiplyScalar(scale));
+
+              scene.add(object);
+              setLoading(false);
+            },
+            (xhr) => {
+              console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+            },
+            (error) => {
+              console.error("Error loading OBJ:", error);
+              setError("Failed to load 3D model");
+              setLoading(false);
+            }
+          );
+        },
+        (xhr) => {
+          console.log("MTL " + (xhr.loaded / xhr.total) * 100 + "% loaded");
+        },
+        (error) => {
+          console.error("Error loading MTL:", error);
+          setError("Failed to load materials");
+          setLoading(false);
+        }
+      );
+    } else {
+      // Load OBJ without materials
+      const objLoader = new OBJLoader();
+      objLoader.load(
+        objPath,
+        (object) => {
+          const box = new THREE.Box3().setFromObject(object);
+          const center = box.getCenter(new THREE.Vector3());
+          const size = box.getSize(new THREE.Vector3());
+
+          const maxDim = Math.max(size.x, size.y, size.z);
+          const scale = 4 / maxDim;
+          object.scale.multiplyScalar(scale);
+
+          object.position.sub(center.multiplyScalar(scale));
+
+          scene.add(object);
+          setLoading(false);
+        },
+        (xhr) => {
+          console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+        },
+        (error) => {
+          console.error("Error loading OBJ:", error);
+          setError("Failed to load 3D model");
+          setLoading(false);
+        }
+      );
+    }
 
     // Animation loop
     const animate = () => {
@@ -89,7 +144,7 @@ const ObjViewer = ({
       }
       renderer.dispose();
     };
-  }, [objPath, width, height]);
+  }, [objPath, mtlPath, width, height]);
 
   return (
     <div style={{ position: "relative" }}>
