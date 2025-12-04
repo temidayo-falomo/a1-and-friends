@@ -29,7 +29,7 @@ const TeardropMarker = ({
     }
   });
 
-  const color = isSelected ? "#3b82f6" : "#ffffff"; // Blue when selected, white otherwise
+  const color = isSelected ? "#f63b4b" : "#ffffff"; // Red when selected, white otherwise
 
   return (
     <group ref={groupRef} position={position}>

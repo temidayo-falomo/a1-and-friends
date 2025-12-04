@@ -15,6 +15,7 @@ type TeardropModalProps = {
   isSelected: boolean;
   minimumSpendPerSeat?: number;
   reservationFee?: number;
+  vipPositions?: number[];
 };
 
 const TeardropModal = ({
@@ -25,6 +26,7 @@ const TeardropModal = ({
   isSelected,
   minimumSpendPerSeat = 0,
   reservationFee = 0,
+  vipPositions = [],
 }: TeardropModalProps) => {
   const handleBlueOut = () => {
     onBlueOut();
@@ -44,28 +46,35 @@ const TeardropModal = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="bg-black/90 border border-white/20 text-white">
         <DialogTitle className="text-xl font-semibold">
-          Chair #{teardropNumber}
+          Table {teardropNumber}
         </DialogTitle>
         <DialogDescription className="text-white/70">
           {isSelected
-            ? "This chair is already selected."
-            : "Click the button below to select this chair."}
+            ? "This Table is Reserved."
+            : `${
+                vipPositions.includes(teardropNumber)
+                  ? "Seats 6-8"
+                  : "Seats 8-10"
+              }`}
         </DialogDescription>
 
         {(minimumSpendPerSeat > 0 || reservationFee > 0) && (
-          <div className="mt-4 space-y-2 text-sm">
+          <div className="mt-4 space-y-2 text-base">
             {minimumSpendPerSeat > 0 && (
               <div className="flex justify-between items-center">
-                <span className="text-white/70">Minimum spend per seat:</span>
-                <span className="font-semibold text-white">
+                <span className="text-white/70">Minimum Spend:</span>
+                <span className="font-semibold text-white text-xl">
                   {formatCurrency(minimumSpendPerSeat)}
                 </span>
               </div>
             )}
             {reservationFee > 0 && (
               <div className="flex justify-between items-center">
-                <span className="text-white/70">Reservation fee:</span>
-                <span className="font-semibold text-white">
+                <div className="flex flex-col text-white/70">
+                  <span>Reservation Fee:</span>
+                  <span>(Non-refundable)</span>
+                </div>
+                <span className="font-semibold text-white text-xl">
                   {formatCurrency(reservationFee)}
                 </span>
               </div>
@@ -74,7 +83,7 @@ const TeardropModal = ({
         )}
 
         <div className="flex justify-center items-center gap-2 mt-4">
-          <button
+          {/* <button
             onClick={handleBlueOut}
             disabled={isSelected}
             className={`px-4 py-2 rounded-md font-medium transition-colors ${
@@ -83,7 +92,13 @@ const TeardropModal = ({
                 : "bg-blue-600 hover:bg-blue-700 active:bg-blue-800"
             }`}
           >
-            reserve your table
+          {isSelected ?  "Reserved" : "Reserve Your Table"}
+          </button> */}
+          <button
+            disabled={true}
+            className={`px-4 py-2 rounded-md font-medium transition-colors bg-gray-600 cursor-not-allowed ${"bg-gray-600 cursor-not-allowed"}`}
+          >
+            {isSelected ? "Reserved" : "Reserve Your Table"}
           </button>
         </div>
       </DialogContent>

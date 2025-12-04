@@ -67,6 +67,7 @@ type GlbViewerProps = {
   teardropPositions?: TeardropPosition[];
   minimumSpendPerSeat?: number;
   reservationFee?: number;
+  vipPositions?: number[];
 };
 
 const GlbViewer = ({
@@ -77,10 +78,11 @@ const GlbViewer = ({
   teardropPositions = [],
   minimumSpendPerSeat,
   reservationFee,
+  vipPositions = [],
 }: GlbViewerProps) => {
   const [loading, setLoading] = useState(true);
   const [selectedTeardrops, setSelectedTeardrops] = useState<Set<number>>(
-    new Set()
+    new Set([1, 2, 4])
   );
   const [modalOpen, setModalOpen] = useState(false);
   const [currentTeardrop, setCurrentTeardrop] = useState<number | null>(null);
@@ -177,6 +179,7 @@ const GlbViewer = ({
             getTeardropPricing(currentTeardrop).minimumSpendPerSeat
           }
           reservationFee={getTeardropPricing(currentTeardrop).reservationFee}
+          vipPositions={vipPositions}
         />
       )}
     </div>
