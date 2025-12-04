@@ -13,6 +13,8 @@ type TeardropModalProps = {
   teardropNumber: number;
   onBlueOut: () => void;
   isSelected: boolean;
+  minimumSpendPerSeat?: number;
+  reservationFee?: number;
 };
 
 const TeardropModal = ({
@@ -21,10 +23,21 @@ const TeardropModal = ({
   teardropNumber,
   onBlueOut,
   isSelected,
+  minimumSpendPerSeat = 0,
+  reservationFee = 0,
 }: TeardropModalProps) => {
   const handleBlueOut = () => {
     onBlueOut();
     onOpenChange(false);
+  };
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat("en-NG", {
+      style: "currency",
+      currency: "NGN",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
   };
 
   return (
@@ -38,7 +51,29 @@ const TeardropModal = ({
             ? "This chair is already selected."
             : "Click the button below to select this chair."}
         </DialogDescription>
-        <div className="flex justify-end gap-2 mt-4">
+
+        {(minimumSpendPerSeat > 0 || reservationFee > 0) && (
+          <div className="mt-4 space-y-2 text-sm">
+            {minimumSpendPerSeat > 0 && (
+              <div className="flex justify-between items-center">
+                <span className="text-white/70">Minimum spend per seat:</span>
+                <span className="font-semibold text-white">
+                  {formatCurrency(minimumSpendPerSeat)}
+                </span>
+              </div>
+            )}
+            {reservationFee > 0 && (
+              <div className="flex justify-between items-center">
+                <span className="text-white/70">Reservation fee:</span>
+                <span className="font-semibold text-white">
+                  {formatCurrency(reservationFee)}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+
+        <div className="flex justify-center items-center gap-2 mt-4">
           <button
             onClick={handleBlueOut}
             disabled={isSelected}
@@ -48,7 +83,7 @@ const TeardropModal = ({
                 : "bg-blue-600 hover:bg-blue-700 active:bg-blue-800"
             }`}
           >
-            Blue Out
+            reserve your table
           </button>
         </div>
       </DialogContent>

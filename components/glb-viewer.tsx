@@ -55,6 +55,8 @@ const GlbModel = ({ url, onLoad }: GlbModelProps) => {
 type TeardropPosition = {
   id: number;
   position: [number, number, number];
+  minimumSpendPerSeat?: number;
+  reservationFee?: number;
 };
 
 type GlbViewerProps = {
@@ -63,6 +65,8 @@ type GlbViewerProps = {
   height?: number | string;
   className?: string;
   teardropPositions?: TeardropPosition[];
+  minimumSpendPerSeat?: number;
+  reservationFee?: number;
 };
 
 const GlbViewer = ({
@@ -71,6 +75,8 @@ const GlbViewer = ({
   height = "600px",
   className = "",
   teardropPositions = [],
+  minimumSpendPerSeat,
+  reservationFee,
 }: GlbViewerProps) => {
   const [loading, setLoading] = useState(true);
   const [selectedTeardrops, setSelectedTeardrops] = useState<Set<number>>(
@@ -106,6 +112,14 @@ const GlbViewer = ({
       newSet.add(id);
       return newSet;
     });
+  };
+
+  const getTeardropPricing = (id: number) => {
+    const teardrop = defaultPositions.find((t) => t.id === id);
+    return {
+      minimumSpendPerSeat: teardrop?.minimumSpendPerSeat ?? minimumSpendPerSeat,
+      reservationFee: teardrop?.reservationFee ?? reservationFee,
+    };
   };
 
   return (
@@ -159,6 +173,10 @@ const GlbViewer = ({
           teardropNumber={currentTeardrop}
           onBlueOut={() => handleBlueOut(currentTeardrop)}
           isSelected={selectedTeardrops.has(currentTeardrop)}
+          minimumSpendPerSeat={
+            getTeardropPricing(currentTeardrop).minimumSpendPerSeat
+          }
+          reservationFee={getTeardropPricing(currentTeardrop).reservationFee}
         />
       )}
     </div>
