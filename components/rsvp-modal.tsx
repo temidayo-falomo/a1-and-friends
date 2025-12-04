@@ -116,6 +116,8 @@ export default function RSVPModal({ children, eventName }: RSVPModalProps) {
     }
   };
 
+  const isLocked = eventName === "Waved";
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -136,65 +138,73 @@ export default function RSVPModal({ children, eventName }: RSVPModalProps) {
               ))}
             </div>
           </div> */}
-          <form
-            onSubmit={handleSubmit}
-            className="space-y-6 rounded-2xl w-full"
-          >
-            <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
-              FULL NAME
-              <input
-                type="text"
-                value={form.name}
-                onChange={handleChange("name")}
-                className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-base font-bold text-black placeholder:text-neutral-500 focus:border-white"
-                placeholder="TYPE YOUR FULL NAME"
-                required
-              />
-            </label>
-            <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
-              Email Address
-              <input
-                type="email"
-                value={form.email}
-                onChange={handleChange("email")}
-                className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-base font-bold text-black placeholder:text-neutral-500 focus:border-white"
-                placeholder="TYPE YOUR EMAIL"
-                required
-              />
-            </label>
-            <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
-              4 DIGIT PIN
-              <input
-                type="text"
-                value={form.code}
-                onChange={handleChange("code")}
-                maxLength={4}
-                className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-center md:text-xl text-base font-bold tracking-[0.3em] text-black placeholder:text-neutral-500 focus:border-white"
-                placeholder="TYPE YOUR 4 DIGIT PIN"
-                required
-              />
-            </label>
-            <button
-              type="submit"
-              disabled={status === "loading"}
-              className="w-full rounded-full bg-black py-3 text-base font-semibold uppercase tracking-[0.4em] text-white cursor-pointer transition hover:bg-[#ffdf97] disabled:opacity-50 disabled:cursor-not-allowed"
+          {isLocked ? (
+            <div className="space-y-6 rounded-2xl w-full text-center py-8">
+              <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-[0.3em] text-black leading-snug">
+                RSVP <br />  LOCKED
+              </h2>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6 rounded-2xl w-full"
             >
-              {status === "loading" ? "Submitting..." : "Submit"}
-            </button>
-            {status !== "idle" && (
-              <p
-                className={`text-center text-sm font-medium ${
-                  status === "success"
-                    ? "text-green-600"
-                    : status === "error"
-                    ? "text-red-600"
-                    : "text-neutral-600"
-                }`}
+              <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
+                FULL NAME
+                <input
+                  type="text"
+                  value={form.name}
+                  onChange={handleChange("name")}
+                  className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-base font-bold text-black placeholder:text-neutral-500 focus:border-white"
+                  placeholder="TYPE YOUR FULL NAME"
+                  required
+                />
+              </label>
+              <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
+                Email Address
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange("email")}
+                  className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-base font-bold text-black placeholder:text-neutral-500 focus:border-white"
+                  placeholder="TYPE YOUR EMAIL"
+                  required
+                />
+              </label>
+              <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
+                4 DIGIT PIN
+                <input
+                  type="text"
+                  value={form.code}
+                  onChange={handleChange("code")}
+                  maxLength={4}
+                  className="mt-2 w-full rounded-xl border border-black bg-transparent px-4 py-3 text-center md:text-xl text-base font-bold tracking-[0.3em] text-black placeholder:text-neutral-500 focus:border-white"
+                  placeholder="TYPE YOUR 4 DIGIT PIN"
+                  required
+                />
+              </label>
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="w-full rounded-full bg-black py-3 text-base font-semibold uppercase tracking-[0.4em] text-white cursor-pointer transition hover:bg-[#ffdf97] disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {hint}
-              </p>
-            )}
-          </form>
+                {status === "loading" ? "Submitting..." : "Submit"}
+              </button>
+              {status !== "idle" && (
+                <p
+                  className={`text-center text-sm font-medium ${
+                    status === "success"
+                      ? "text-green-600"
+                      : status === "error"
+                      ? "text-red-600"
+                      : "text-neutral-600"
+                  }`}
+                >
+                  {hint}
+                </p>
+              )}
+            </form>
+          )}
         </section>
       </DialogContent>
     </Dialog>
