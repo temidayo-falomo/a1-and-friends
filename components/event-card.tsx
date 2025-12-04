@@ -51,7 +51,7 @@ export default function EventCard({
           codedTextRef.current?.startAnimation();
         }}
         className={
-          "w-[95%] h-[95%] rounded-[8px] p-8 flex flex-col justify-between hover:backdrop-blur-[5px] absolute bg-black/10 duration-500 " +
+          "w-[95%] md:min-w-[250px] h-[95%] rounded-[8px] p-8 flex flex-col justify-between hover:backdrop-blur-[5px] absolute bg-black/10 duration-500 " +
           (hover ? "ml-8 -mt-8" : "")
         }
       >
@@ -80,7 +80,7 @@ export default function EventCard({
       </div>
       <Image
         className={
-          "object-cover w-[95%] h-[95%] rounded-[8px] duration-500 bg-card " +
+          "object-cover w-[95%] md:min-w-[250px] h-[95%] rounded-[8px] duration-500 bg-card " +
           (hover ? "ml-8 -mt-8" : "")
         }
         src={img}
