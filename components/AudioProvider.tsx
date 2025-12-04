@@ -35,7 +35,6 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const previousSrcRef = useRef<string | null>(null);
-  const wasPlayingRef = useRef(false);
 
   // Determine which audio file to play based on the route
   const getAudioSrc = useCallback(() => {
@@ -47,7 +46,7 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
       return "/song.mp3";
     }
     // Default to idanski for home page or other pages
-    return "/Idanski.mp3";
+    return "";
   }, [pathname]);
 
   const audioSrc = getAudioSrc();
@@ -58,7 +57,7 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
     if (!audio) return;
 
     const newSrc = getAudioSrc();
-    
+
     // Get current source path (handle both relative and absolute URLs)
     let currentSrc = "";
     if (audio.src) {
@@ -70,15 +69,15 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
         currentSrc = audio.src;
       }
     }
-    
+
     // Only update if the source actually changed
     if (currentSrc !== newSrc) {
       const wasPlaying = isPlaying;
-      
+
       // Update the source
       audio.src = newSrc;
       audio.load();
-      
+
       // Restore playback state if it was playing
       if (wasPlaying) {
         // Use a small timeout to ensure the audio is loaded
