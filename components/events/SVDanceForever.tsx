@@ -64,7 +64,7 @@ export default function SVDanceForever({ event }: SVDanceForeverProps) {
                   RSVP guestlist
                 </button>
               </RSVPModal>
-              <ReserveTableModal>
+              <ReserveTableModal eventName={event.eventName}>
                 <button className="rounded-full cursor-pointer border-2 border-amber-400 px-8 py-4 text-base md:text-lg uppercase tracking-wide text-amber-200 font-medium transition hover:bg-amber-500/20 hover:border-amber-300 hover:text-white hover:scale-105">
                   Reserve a table
                 </button>

@@ -13,10 +13,12 @@ const SHEET_BEST_API =
 
 interface ReserveTableModalProps {
   children: React.ReactNode;
+  eventName?: string;
 }
 
 export default function ReserveTableModal({
   children,
+  eventName,
 }: ReserveTableModalProps) {
   const [form, setForm] = useState({ name: "", email: "", whatsapp: "" });
   const [status, setStatus] = useState<
@@ -73,6 +75,7 @@ export default function ReserveTableModal({
             Name: trimmedName,
             Email: trimmedEmail,
             Whatsapp: trimmedWhatsapp,
+            Event: eventName || "Unknown",
             Timestamp: new Date().toISOString(),
           },
         ]),
@@ -119,7 +122,7 @@ export default function ReserveTableModal({
             </div>
 
             <label className="block md:text-base text-sm font-bold uppercase tracking-[0.2em] text-black">
-             FULL NAME
+              FULL NAME
               <input
                 type="text"
                 value={form.name}

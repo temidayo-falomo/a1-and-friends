@@ -109,7 +109,7 @@ export default function CruiseGang44DB({ event }: CruiseGang44DBProps) {
                   RSVP guestlist
                 </button>
               </RSVPModal>
-              <ReserveTableModal>
+              <ReserveTableModal eventName={event.eventName}>
                 <button className="rounded-full cursor-pointer border-2 border-black px-8 py-4 text-base md:text-lg uppercase tracking-wide text-black font-medium transition hover:bg-black hover:text-white hover:scale-105">
                   Reserve a table
                 </button>

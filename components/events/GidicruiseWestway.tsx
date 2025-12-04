@@ -64,7 +64,7 @@ export default function GidicruiseWestway({ event }: GidicruiseWestwayProps) {
                   RSVP guestlist
                 </button>
               </RSVPModal>
-              <ReserveTableModal>
+              <ReserveTableModal eventName={event.eventName}>
                 <button className="rounded-full cursor-pointer border-2 border-cyan-400 px-8 py-4 text-base md:text-lg uppercase tracking-wide text-cyan-200 font-medium transition hover:bg-cyan-500/20 hover:border-cyan-300 hover:text-white hover:scale-105">
                   Reserve a table
                 </button>
