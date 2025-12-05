@@ -105,11 +105,14 @@ export default function Waved({ event }: WavedProps) {
                   RSVP guestlist
                 </button>
               </RSVPModal>
-              <ReserveTableModal eventName={event.eventName}>
-                <button className="rounded-full cursor-pointer border-2 border-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-white font-medium transition hover:bg-white hover:text-black hover:scale-105">
-                  Reserve a table
-                </button>
-              </ReserveTableModal>
+              {/* <ReserveTableModal eventName={event.eventName}> */}
+              <Link
+                href="/club"
+                className="rounded-full cursor-pointer border-2 border-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-white font-medium transition hover:bg-white hover:text-black hover:scale-105"
+              >
+                Reserve a table
+              </Link>
+              {/* </ReserveTableModal> */}
             </div>
           </div>
         </div>
