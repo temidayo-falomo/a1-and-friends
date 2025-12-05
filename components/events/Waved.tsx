@@ -107,7 +107,7 @@ export default function Waved({ event }: WavedProps) {
               </RSVPModal>
               {/* <ReserveTableModal eventName={event.eventName}> */}
               <Link
-                href="/club"
+                href="/club/waved"
                 className="rounded-full cursor-pointer border-2 border-white px-8 py-4 text-base md:text-lg uppercase tracking-wide text-white font-medium transition hover:bg-white hover:text-black hover:scale-105"
               >
                 Reserve a table
