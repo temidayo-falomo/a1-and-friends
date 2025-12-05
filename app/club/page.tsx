@@ -5,7 +5,20 @@ import React from "react";
 
 function ClubRender() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center relative">
+      <div className="absolute top-6 left-6 z-10 bg-black/80 backdrop-blur-sm rounded-lg p-6 text-white space-y-3 max-w-xs">
+        <h2 className="text-xl font-semibold">Select a table to Reserve</h2>
+        <div className="space-y-2 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-gray-400"></div>
+            <span>Grey icons indicate tables are available</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-red-500"></div>
+            <span>Red icons indicate tables are reserved</span>
+          </div>
+        </div>
+      </div>
       <GlbViewer
         url="/3d/club-compressed.glb"
         width="100vw"
