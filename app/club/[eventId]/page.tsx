@@ -35,10 +35,10 @@ function ClubRender() {
   return (
     <div className="min-h-screen flex items-center justify-center relative">
       {showPanel && (
-        <div className="absolute top-6 left-6 z-10 bg-black/80 backdrop-blur-sm rounded-lg p-6 text-white space-y-3 max-w-xs">
+        <div className="absolute top-6 left-6 z-10 bg-black/80 backdrop-blur-sm rounded-lg p-6 text-white space-y-3 max-w-[340px]">
           <button
             onClick={() => setShowPanel(false)}
-            className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
+            className="absolute top-4 cursor-pointer right-4 text-white/70 hover:text-white transition-colors"
             aria-label="Close panel"
           >
             <svg
