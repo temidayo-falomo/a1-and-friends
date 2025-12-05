@@ -97,6 +97,11 @@ const GlbViewer = ({
       .filter((r) => r.paymentStatus === "success")
       .map((r) => r.tableNumber)
   );
+  
+  // Always reserve tables 1, 2, and 4 by default
+  reservedTables.add(1);
+  reservedTables.add(2);
+  reservedTables.add(4);
 
   // Default positions if none provided - these are example positions that can be adjusted
   const defaultPositions: TeardropPosition[] =

@@ -41,6 +41,12 @@ export const createReservation = mutation({
     paymentReference: v.string(),
   },
   handler: async (ctx, args) => {
+    // Tables 1, 2, and 4 are always reserved by default
+    const alwaysReservedTables = [1, 2, 4];
+    if (alwaysReservedTables.includes(args.tableNumber)) {
+      throw new Error("This table is reserved by default and cannot be booked");
+    }
+
     // Check if table is already reserved
     const existing = await ctx.db
       .query("reservations")
