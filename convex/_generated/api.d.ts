@@ -11,6 +11,7 @@
 import type * as eventPricing from "../eventPricing.js";
 import type * as events from "../events.js";
 import type * as migrations from "../migrations.js";
+import type * as paymentVerification from "../paymentVerification.js";
 import type * as payments from "../payments.js";
 import type * as reservations from "../reservations.js";
 
@@ -24,6 +25,7 @@ declare const fullApi: ApiFromModules<{
   eventPricing: typeof eventPricing;
   events: typeof events;
   migrations: typeof migrations;
+  paymentVerification: typeof paymentVerification;
   payments: typeof payments;
   reservations: typeof reservations;
 }>;

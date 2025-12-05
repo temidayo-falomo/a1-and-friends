@@ -75,6 +75,17 @@ export const createReservation = mutation({
   },
 });
 
+// Query to get all pending reservations (for scheduled verification)
+export const getPendingReservations = query({
+  args: {},
+  handler: async (ctx) => {
+    return await ctx.db
+      .query("reservations")
+      .filter((q) => q.eq(q.field("paymentStatus"), "pending"))
+      .collect();
+  },
+});
+
 // Mutation to update payment status after verification
 export const updatePaymentStatus = mutation({
   args: {
