@@ -4,7 +4,7 @@ import { cronJobs } from "convex/server";
 import { internal } from "./_generated/api";
 
 // Scheduled function to periodically verify pending payments
-// This runs every 10 minutes to check for payments that completed
+// This runs every 6 minutes to check for payments that completed
 // but weren't verified due to client-side callback failures
 export const verifyPendingPayments = internalAction({
   args: {},
@@ -113,11 +113,11 @@ export const verifyPendingPayments = internalAction({
   },
 });
 
-// Schedule the verification job to run every 10 minutes
+// Schedule the verification job to run every 6 minutes
 const crons = cronJobs();
 crons.interval(
   "verify pending payments",
-  { minutes: 10 },
+  { minutes: 6 },
   internal.paymentVerification.verifyPendingPayments
 );
 export default crons;
