@@ -57,8 +57,8 @@ function ClubRender() {
           {
             id: 6,
             position: [0.8, 0.2, 0],
-            minimumSpendPerSeat: 1200000,
-            reservationFee: 1650000,
+            minimumSpendPerSeat: 1000000,
+            reservationFee: 200000,
           },
           // {
           //   id: 7,
@@ -69,14 +69,14 @@ function ClubRender() {
           {
             id: 7,
             position: [1.6, 0.2, -0.15],
-            minimumSpendPerSeat: 2700000,
-            reservationFee: 1350000,
+            minimumSpendPerSeat: 1000000,
+            reservationFee: 200000,
           },
           {
             id: 8,
             position: [1.6, 0.2, -0.45],
-            minimumSpendPerSeat: 3400000,
-            reservationFee: 1700000,
+            minimumSpendPerSeat: 1000000,
+            reservationFee: 200000,
           },
           {
             id: 9,
@@ -103,7 +103,7 @@ function ClubRender() {
             reservationFee: 150000,
           },
         ]}
-        vipPositions={[3, 5, 6, 7, 8, 9, 10, 11, 12]}
+        vipPositions={[3, 9, 10, 11, 12]}
       />
     </div>
   );
