@@ -11,7 +11,7 @@ function ClubRender() {
         <div className="space-y-2 text-sm">
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 rounded-full bg-gray-400"></div>
-            <span>Grey icons indicate tables are available</span>
+            <span>White icons indicate tables are available</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 rounded-full bg-red-500"></div>
