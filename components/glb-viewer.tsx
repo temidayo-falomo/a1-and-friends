@@ -4,6 +4,8 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Grid } from "@react-three/drei";
 import * as THREE from "three";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 import TeardropMarker from "./teardrop-marker";
 import TeardropModal from "./teardrop-modal";
 
@@ -64,6 +66,7 @@ type GlbViewerProps = {
   width?: number | string;
   height?: number | string;
   className?: string;
+  eventId: string;
   teardropPositions?: TeardropPosition[];
   minimumSpendPerSeat?: number;
   reservationFee?: number;
@@ -75,17 +78,25 @@ const GlbViewer = ({
   width = "100%",
   height = "600px",
   className = "",
+  eventId,
   teardropPositions = [],
   minimumSpendPerSeat,
   reservationFee,
   vipPositions = [],
 }: GlbViewerProps) => {
   const [loading, setLoading] = useState(true);
-  const [selectedTeardrops, setSelectedTeardrops] = useState<Set<number>>(
-    new Set([1, 2, 4])
-  );
   const [modalOpen, setModalOpen] = useState(false);
   const [currentTeardrop, setCurrentTeardrop] = useState<number | null>(null);
+
+  // Get all reservations for this event
+  const reservations = useQuery(api.reservations.getByEventId, { eventId }) || [];
+  
+  // Create a set of reserved table numbers
+  const reservedTables = new Set(
+    reservations
+      .filter((r) => r.paymentStatus === "success")
+      .map((r) => r.tableNumber)
+  );
 
   // Default positions if none provided - these are example positions that can be adjusted
   const defaultPositions: TeardropPosition[] =
@@ -108,12 +119,10 @@ const GlbViewer = ({
     setModalOpen(true);
   };
 
-  const handleBlueOut = (id: number) => {
-    setSelectedTeardrops((prev) => {
-      const newSet = new Set(prev);
-      newSet.add(id);
-      return newSet;
-    });
+  const handleBlueOut = () => {
+    // Reservation is handled by the modal after payment
+    // This function is called after successful payment to refresh the view
+    // The reservedTables set will automatically update via the query
   };
 
   const getTeardropPricing = (id: number) => {
@@ -153,7 +162,7 @@ const GlbViewer = ({
             key={id}
             position={position}
             number={id}
-            isSelected={selectedTeardrops.has(id)}
+            isSelected={reservedTables.has(id)}
             onClick={() => handleTeardropClick(id)}
           />
         ))}
@@ -174,8 +183,9 @@ const GlbViewer = ({
           open={modalOpen}
           onOpenChange={setModalOpen}
           teardropNumber={currentTeardrop}
-          onBlueOut={() => handleBlueOut(currentTeardrop)}
-          isSelected={selectedTeardrops.has(currentTeardrop)}
+          onBlueOut={handleBlueOut}
+          isSelected={reservedTables.has(currentTeardrop)}
+          eventId={eventId}
           minimumSpendPerSeat={
             getTeardropPricing(currentTeardrop).minimumSpendPerSeat
           }

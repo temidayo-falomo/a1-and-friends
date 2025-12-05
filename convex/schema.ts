@@ -22,5 +22,23 @@ export default defineSchema({
     ),
     vipPositions: v.array(v.number()),
   }).index("by_eventId", ["eventId"]),
-});
 
+  reservations: defineTable({
+    eventId: v.string(),
+    tableNumber: v.number(),
+    customerName: v.string(),
+    customerEmail: v.string(),
+    customerPhone: v.string(),
+    reservationFee: v.number(),
+    minimumSpendPerSeat: v.number(),
+    paymentReference: v.string(),
+    paymentStatus: v.union(
+      v.literal("pending"),
+      v.literal("success"),
+      v.literal("failed")
+    ),
+    createdAt: v.number(),
+  })
+    .index("by_eventId", ["eventId"])
+    .index("by_eventId_tableNumber", ["eventId", "tableNumber"]),
+});

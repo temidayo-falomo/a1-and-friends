@@ -83,6 +83,7 @@ function ClubRender() {
         url="/3d/club-compressed.glb"
         width="100vw"
         height="100vh"
+        eventId={eventId}
         teardropPositions={pricing.tablePositions.map((tp) => ({
           id: tp.id,
           position: tp.position as [number, number, number],
