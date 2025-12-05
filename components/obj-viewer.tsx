@@ -160,7 +160,7 @@ const ObjViewer = ({
             fontSize: "18px",
           }}
         >
-          Loading 3D Model...
+          Loading...
         </div>
       )}
       {error && (
