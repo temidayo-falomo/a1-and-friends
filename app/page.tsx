@@ -5,54 +5,15 @@ import Image from "next/image";
 import NavBar from "@/components/navbar/navbar";
 import ObjViewer from "@/components/obj-viewer";
 import EventCard from "@/components/event-card";
-import { events } from "@/data/events";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 import LightRays from "@/components/LightRays";
 
 const codePattern = /^[A-Z0-9]{4}$/;
 
-const tableCopy = [
-  {
-    label: "Main Lounge",
-    window: "Nov 20 → Dec 1",
-    highlights: [
-      "Reservation fee ₦1.5m locks your lounge.",
-      "Min spend ₦3m if confirmed before Nov 30.",
-      "Late confirms (Dec 1) jump to ₦3.8m min spend.",
-    ],
-  },
-  // {
-  //   label: "Skyline VIP",
-  //   window: "Nov 20 → Dec 1",
-  //   highlights: [
-  //     "Reservation fee ₦2.5m applied to total.",
-  //     "Min spend ₦5m before Nov 30, ₦6m afterwards.",
-  //     "Includes backstage escort + signature bottle drop.",
-  //   ],
-  // },
-];
-
-const girlies = [
-  // "Girl 1.png",
-  "Girl 2.png",
-  // "Girl 3.png",
-  // "Girl 4.png",
-  "Girl 5.png",
-  "Girl 6.png",
-];
-
-const guestCharacters = [
-  "44DB.png",
-  "44DB2.png",
-  "A1.png",
-  "CG1.png",
-  "DANCE.png",
-  "Gidi cruise.png",
-  // "sv.png",
-  "SV2.png",
-  "Westway.png",
-];
 
 export default function Home() {
+  const events = useQuery(api.events.getAll) || [];
   const [form, setForm] = useState({ name: "", email: "", code: "" });
   const [status, setStatus] = useState<"idle" | "error" | "success">("idle");
   const [hint, setHint] = useState(

@@ -3,7 +3,8 @@
 import GlbViewer from "@/components/glb-viewer";
 import React, { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { getPricingByEventId } from "@/data/club-pricing";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 function ClubRender() {
   const params = useParams();
@@ -11,7 +12,17 @@ function ClubRender() {
   const eventId = params?.eventId as string;
   const [showPanel, setShowPanel] = useState(true);
 
-  const pricing = getPricingByEventId(eventId);
+  const pricing = useQuery(api.eventPricing.getByEventId, { eventId });
+
+  if (pricing === undefined) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-black text-white">
+        <div className="text-center">
+          <p className="text-white/70">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!pricing) {
     return (
@@ -72,7 +83,12 @@ function ClubRender() {
         url="/3d/club-compressed.glb"
         width="100vw"
         height="100vh"
-        teardropPositions={pricing.tablePositions}
+        teardropPositions={pricing.tablePositions.map((tp) => ({
+          id: tp.id,
+          position: tp.position as [number, number, number],
+          minimumSpendPerSeat: tp.minimumSpendPerSeat,
+          reservationFee: tp.reservationFee,
+        }))}
         vipPositions={pricing.vipPositions}
       />
     </div>

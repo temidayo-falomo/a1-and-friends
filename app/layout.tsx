@@ -5,6 +5,7 @@ import "./globals.css";
 import GridBg from "@/components/grid-bg";
 import { AudioProvider } from "@/components/AudioProvider";
 import { FloatingAudioButton } from "@/components/FloatingAudioButton";
+import { ConvexClientProvider } from "./ConvexClientProvider";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -97,7 +98,9 @@ export default function RootLayout({
       <body
         className={`${raleway.variable} ${geistMono.variable} ${canela.variable} antialiased`}
       >
-        <AudioProvider>{children}</AudioProvider>
+        <ConvexClientProvider>
+          <AudioProvider>{children}</AudioProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   );
